@@ -1,5 +1,6 @@
 # Функции
 import itertools
+import webbrowser
 
 def getnumber(msg):
     IsFound = False
@@ -69,6 +70,11 @@ def t4():
         text = " ".join(itertools.chain(*zip(parts, symbols)))
         print(text)
         print("")
+    Meme = getnumber("1 , если хотите мемчик (Откроется браузер)")
+    if Meme == "1":
+        webbrowser.open("Python\\3.10\Do be do be do wah.jpg")
+   
+    
 
 while True:
     printcolor("Доступные задания: 1,2,3,4", 32)
