@@ -1,3 +1,5 @@
 [TODO]\
 \
-<img src="https://github.com/MC-MOOGLE/TopCourse/assets/146340660/5fc7336f-cda6-4c1a-8af3-c426692f047e" alt="Загрузка мемчика">
+<img src="https://github.com/MC-MOOGLE/TopCourse/assets/146340660/1c84a7c8-8f3c-42f7-9e75-5c125c85494f" alt="Загрузка мемчика">
+
+
