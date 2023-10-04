@@ -72,7 +72,7 @@ def t4():
         print("")
     Meme = getnumber("1 , если хотите мемчик (Откроется браузер)")
     if Meme == "1":
-        webbrowser.open("Python\\3.10\Do be do be do wah.jpg")
+        webbrowser.open("https://raw.githubusercontent.com/MC-MOOGLE/TopCourse/main/Python/3.10/Do%20be%20do%20be%20do%20wah.jpg")
    
     
 
