@@ -9,7 +9,7 @@ def getnumber(msg):
           num = input("Введите " + msg)
           float(num)
           IsFound = True
-          return num
+          return float(num)
         except ValueError:
             print("Вы ввели неправильный тип данных. Попробуйте снова.")
    
@@ -36,9 +36,9 @@ def t1():
 # Задание 2
 def t2():
     printcolor("Задание 2. Пользователь вводит с клавиатуры три числа. \n Первое число – зарплата за месяц, \n второе число – сумма месячного платежа по кредиту в банке, \n третье число – задолженность за коммунальные услуги. \nВывести на экран сумму, которая останется у пользователя после всех выплат.", 33)
-    revenue = float(getnumber("зарплату: "))
-    credit = float(getnumber("кредитную плату: "))
-    debt = float(getnumber("задолженость: "))
+    revenue = getnumber("зарплату: ")
+    credit = getnumber("кредитную плату: ")
+    debt = getnumber("задолженость: ")
     delta = revenue - credit - debt
     msg = f"У вас останется {delta}"
     if delta < 0:
@@ -48,8 +48,8 @@ def t2():
 # Задание 3
 def t3():
     printcolor("Задание 3. Написать программу, вычисляющую площадь ромба по длинам двух его диагоналей. Длины диагоналей вводятся с клавиатуры пользователем.", 33)
-    d1 = float(getnumber("первую диагональ: "))
-    d2 = float(getnumber("вторую диагональ: "))
+    d1 = getnumber("первую диагональ: ")
+    d2 = getnumber("вторую диагональ: ")
     printcolor(f"Площадь ромба равна {(d1*d2)/2}", 35)
 
 # Задание 4
@@ -70,7 +70,7 @@ def t4():
         text = " ".join(itertools.chain(*zip(parts, symbols)))
         print(text)
         print("")
-    Meme = getnumber("1 , если хотите мемчик (Откроется браузер)")
+    Meme = getnumber("1, если хотите мемчик (Откроется браузер), 0 - нет ")
     if Meme == "1":
         webbrowser.open("https://raw.githubusercontent.com/MC-MOOGLE/TopCourse/main/Python/3.10/Do%20be%20do%20be%20do%20wah.jpg")
    
@@ -79,7 +79,6 @@ def t4():
 while True:
     printcolor("Доступные задания: 1,2,3,4", 32)
     task = getnumber("номер задания: ")
-    task = float(task)
     if task == 1:
         t1()
     elif task == 2:
