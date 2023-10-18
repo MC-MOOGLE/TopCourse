@@ -22,6 +22,7 @@ def getLenght(n):
         else:
             print(f"Вы ввели неправильное число. Требуется цифр: {n}, получено: {len(str(num))}.")
 
+     
 def printcolor(string, code):
     print(f"\033[{code}m{string}\033[0m")
 
