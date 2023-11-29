@@ -18,11 +18,6 @@ def cycletasks(tasks:int):
             md.printcolor("Выход", "red")
             break
 
-#i = 100
-for i in iter(int, 1):
-    print(i)
-
-
 def t1():
     print("""Напишите программу, которая запрашивает два целых числа X и Y, после чего 
 вычисляет и выводит значение X в степени Y. При расчете значения разрешено 
@@ -74,6 +69,8 @@ def t4():
             pass
         else:
             newnum += i
+    if not newnum:
+        newnum = 0
     print(f"\nНовое число: {md.color(newnum, 'Green')}")
     
 
