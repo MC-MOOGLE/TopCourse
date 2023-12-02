@@ -1,24 +1,120 @@
 import webbrowser
+import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).parent.parent))
+from CustomModule import mmodule as md
 
-"""Я знаю, что мы должны были решать это через циклы for, но я не хотел тратить час на ручной труд,
-поэтому потратил 4 часа на автоматизацию, которая не способна вывести заданный нам пример в задании 👍"""
+#Я знаю, что мы должны были решать это через циклы for, но я не хотел тратить час на ручной труд,
+#поэтому потратил 4 часа на автоматизацию, которая не способна вывести заданный нам пример в задании 👍
 
-# Вот как делать надо
+# ɴᴏᴡ ᴘʟᴀʏɪɴɢ: Im in Spain, but p is silent ───────────⚪────── ◄◄⠀▐▐ ⠀►► 5:12/ 96:𝟻𝟼 ───○ 🔊⠀ ᴴᴰ ⚙️
 
-def a(size):
-    for layer in range(size + 1):
-            print("  " * layer, end="")
-            print("* " * (size - layer))
+def drawsquare(size, id):
+    global layer
+    print(id + ".)\n")
+    match id:
+        case "а" | "f":
+            for layer in range(size):
+                    print("  " * layer, end="")
+                    print("* " * (size - layer))
 
-def b(size):
-    for layer in range(size + 1):
-            print("* " * layer)
+        case "б" | ",":
+            for layer in range(size):
+                    print("* " * (layer + 1))
 
-# И. т. д 
+        case "в" | "d":
+            for layer in range(size):
+                print("  " * layer, end="")
+                print("* " * (size - (layer * 2)))
 
-# a(int(input("Размер квадрата: ")))    
+        case "г" | "u":
+            for layer in range(int(size / 2) + 1):
+                print("  " * layer, end="")
+                print("* " * (size - (layer * 2)))
+            for layer in range(int(size / 2), 0, -1):
+                print()
+
+        case "д" | "l":
+            for layer in range(int(size / 2)):
+                print("  " * layer, end="")
+                print("* " * (size - (layer * 2)))
+            if size % 2:
+                print("  " * int(size / 2), end="")
+                print("*")
+            for layer in range(int(size / 2), 0, -1):
+                layer -= 1 # Очень тупой костыль, но я слишком сонный, чтобы что-то фиксить
+                print("  " * layer, end="")
+                print("* " * (size - (layer * 2)))
+
+        case "е" | "t":
+            for layer in range(1, int(size / 2) + 1):
+                print("* " * layer, end="")
+                print("  " * int((size - (layer * 2))), end="")
+                print("* " * layer)
+            if size % 2:
+                print("* " * (layer * 2 + 1))
+            for layer in range(int(size / 2), 0, -1):
+                print("* " * layer, end="")
+                print("  " * int((size - (layer * 2))), end="")
+                print("* " * layer)
+        
+        case "ж" | ";":
+            for layer in range(1, int(size / 2) + 1):
+                print("* " * layer)
+            if size % 2:
+                print("* " * (layer + 1))
+            for layer in range(int(size / 2), 0, -1):
+                print("* " * layer)     
+
+        case "з" | "p":
+            for layer in range(1, int(size / 2) + 1):
+                print("  " * (size - layer), end="")
+                print("* " * layer)
+            if size % 2:
+                print("  " * (size - (layer + 1)), end="")
+                print("* " * (layer + 1))
+            for layer in range(int(size / 2), 0, -1):
+                print("  " * (size - layer), end="")
+                print("* " * layer)
+
+        case "и" | "b":
+            for layer in range(size):
+                    print("* " * (size - layer))
+
+        case "к" | "r":
+            for layer in range(size):
+                    print("  " * (size - layer), end="")
+                    print("* " * (layer + 1))
+
+        case _:
+            md.printcolor("Такой фигуры нет! Выход!", "red")
+            exit(666)       
+                    
+# for i in range(20):
+#     for j in ["f", ",", "d", "u", "l", "t", ";", "p", "b", "r"]:
+#         drawsquare(i, j)
+#     input(">")
+if str(input("Открыть таблицу квадратов (не корней)? y/n: ")).lower() == "y":
+     webbrowser.open("https://github.com/MC-MOOGLE/TopCourse/blob/main/Python/23.11.21/Squares.png")
+print("Для выхода, введите любой несуществующий id")
+while True:
+    id = str(input("Введите id квадрата: "))
+    drawsquare(md.getnumber("сторону квадрата"), id)
 
 # А вот как делать не надо
+
+# To be fair, you have to have a very high IQ to understand matrix method.
+# The humour is extremely subtle, and without a solid grasp of theoretical physics
+# most of the jokes will go over a typical viewer’s head. There’s also this method nihilistic outlook,
+# which is deftly woven into his characterisation- his personal philosophy draws heavily from Narodnaya Volya literature,
+# for instance. The fans understand this stuff;
+# they have the intellectual capacity to truly appreciate the depths of these jokes,
+# to realise that they’re not just funny—they say something deep about LIFE.
+# As a consequence people who dislike matrix method truly ARE idiots- of course they wouldn’t appreciate,
+# for instance, the humour in Rick’s existential catchphrase “Т. к я использую матрицы 3х3, число всегда будет округлятся к ближайшему числу / 3”
+# which itself is a cryptic reference to Turgenev’s Russian epic Fathers and Sons.
+# I’m smirking right now just imagining one of those addlepated simpletons scratching their heads in confusion
+# as My genius wit unfolds itself on their cmd screens.
 
 matrix = {"а": [1,1,1,
                 0,1,1,
@@ -58,13 +154,18 @@ matrix = {"а": [1,1,1,
                 
         "к":     [0,0,1,
                   0,1,1,
-                  1,1,1]}
+                  1,1,1],
+        
+        "л":    ["MYLIVEISPAIN","MYLIVEISPAIN","MYLIVEISPAIN","MYLIVEISPAIN","MYLIVEISPAIN","MYLIVEISPAIN","MYLIVEISPAIN","MYLIVEISPAIN","MYLIVEISPAIN"]}
+
+# 😂G̭̺̙͔̦̖̭E̞̫͙T͕͇😂̩̩̭̗O̝̗̯̖͍͙̬͎U̲͎͕̳͓̱̖̯T̤😂̞̮͓̙O͍͉̥̻̣̺̩̗F͔̜̻͙̥̱ͅ😂̦͖͚͚̺͚M͙Y̘😂͉̝̘̖̮̜H̱̬̲̯E̘̗̥̹͚͕ͅA̠̰̳͇̻̖͇̬D̩͍̩͔̭͓😂͖̹G̻̞̺̬͓̫͙͔E̻̫̙̞T̹̙̹😂̞͙͔̣̪̩O͙̪̹͙͈̪͖̘U͍͚̱͖T̫̫̝̰̝😂̫̤̥̱̖̳̜O͎̼͔͖̥̩F͇̫̳͔̝😂̬͉M͎̙̤̦̰̱͙Y̫̭̜͚̦͈̰😂͈̖̰͎͉H̳̳̬͔͙̲ͅͅE̻͇̹̬̰̜̖̱A͈̜D̜̣͕̫̯̻̝̭😂̰G̠̲͔̻͔̙̯E̯͚̙̘T̙̜͍̳̩̣͕̭😂̠̪̪͎̱O̹̰̺͙̘̪̭̞̱U̻̮͔͈̠ͅT̫͍͖̪̞͚😂͎̖̥͇O͕̩̯̠̹̜͖F̗͉͚͈̤😂̘̠͈̲̦͉̠M̝͈̰̥̹̗̯ͅY̻͕̳͔̠̟̼̙̣😂̜̗̩̼͓͖H̪͍̞͓̟̠̼̻E̥̰͕̳̣͉̪̭A͔D̗̮😂͔̜̜͙̤̹̩G̗̤͙̩̤̳E̜̗̥̼̲̺T̫͇̞̺̞😂̭̩̦̹̹̭O̭̯͉̫͎̻̮U̮͇͇͔̗T̞̭̦̼̗̹😂̜̪͖͍O̰͓͎̘̜̙͕F̞̝̖😂̩̟͖̭͍̦M̺̖̙̺Y͙̫̤̺̠̰😂̞̫̩H̖̤͍̣͔̟ͅE̞̹̞̗̭̳Ḁ̗͚͔͖D͓͇̱͍̖͙ͅ😂͈̳G̟̫̣͎̞͖͔͇Ẹ̘̦̭ͅT̩̻͎̹͓̭😂̺̦̞͔̫̟O̫U̪̪̩T͉̻̰͎̙̹̣̯😂͍̲̰̟O̞̬͚̻̞̹̪̳ͅF͚͓̤͓͕̱͖😂̦̟̣̖͇̦͕̞M͍̬͚̠̪̙Y̖̮̟̜̗̻̺😂̪H̬̝̬̼̫̺̗̦E͈̱A͈̗̜͚̭̱͇̙ͅD̳̻😂G̭̺̙͔̦̖̭E̞̫͙T͕͇😂̩̩̭̗O̝̗̯̖͍͙̬͎U̲͎͕̳͓̱̖̯T̤😂̞̮͓̙O͍͉̥̻̣̺̩̗F͔̜̻͙̥̱ͅ😂̦͖͚͚̺͚M͙Y̘😂͉̝̘̖̮̜H̱̬̲̯E̘̗̥̹͚͕ͅA̠̰̳͇̻̖͇̬D̩͍̩͔̭͓😂͖̹G̻̞̺̬͓̫͙͔E̻̫̙̞T̹̙̹😂̞͙͔̣̪̩O͙̪̹͙͈̪͖̘U͍͚̱͖T̫̫̝̰̝😂̫̤̥̱̖̳̜O͎̼͔͖̥̩F͇̫̳͔̝😂̬͉M͎̙̤̦̰̱͙Y̫̭̜͚̦͈̰😂͈̖̰͎͉H̳̳̬͔͙̲ͅͅE̻͇̹̬̰̜̖̱A͈̜D̜̣͕̫̯̻̝̭😂̰G̠̲͔̻͔̙̯E̯͚̙̘T̙̜͍̳̩̣͕̭😂̠̪̪͎̱O̹̰̺͙̘̪̭̞̱U̻̮͔͈̠ͅT̫͍͖̪̞͚😂͎̖̥͇O͕̩̯̠̹̜͖F̗͉͚͈̤😂̘̠͈̲̦͉̠M̝͈̰̥̹̗̯ͅY̻͕̳͔̠̟̼̙̣😂̜̗̩̼͓͖H̪͍̞͓̟̠̼̻E̥̰͕̳̣͉̪̭A͔D̗̮😂͔̜̜͙̤̹̩G̗̤͙̩̤̳E̜̗̥̼̲̺T̫͇̞̺̞😂̭̩̦̹̹̭O̭̯͉̫͎̻̮U̮͇͇͔̗T̞̭̦̼̗̹😂̜̪͖͍O̰͓͎̘̜̙͕F̞̝̖😂̩̟͖̭͍̦M̺̖̙̺Y͙̫̤̺̠̰😂̞̫̩H̖̤͍̣͔̟ͅE̞̹̞̗̭̳Ḁ̗͚͔͖D͓͇̱͍̖͙ͅ😂͈̳G̟̫̣͎̞͖͔͇Ẹ̘̦̭ͅT̩̻͎̹͓̭😂̺̦̞͔̫̟O̫U̪̪̩T͉̻̰͎̙̹̣̯😂͍̲̰̟O̞̬͚̻̞̹̪̳ͅF͚͓̤͓͕̱͖😂̦̟̣̖͇̦͕̞M͍̬͚̠̪̙Y̖̮̟̜̗̻̺😂̪H̬̝̬̼̫̺̗̦E͈̱A͈̗̜͚̭̱͇̙ͅD̳̻😂G̭̺̙͔̦̖̭E̞̫͙T͕͇😂̩̩̭̗O̝̗̯̖͍͙̬͎U̲͎͕̳͓̱̖̯T̤😂̞̮͓̙O͍͉̥̻̣̺̩̗F͔̜̻͙̥̱ͅ😂̦͖͚͚̺͚M͙Y̘😂͉̝̘̖̮̜H̱̬̲̯E̘̗̥̹͚͕ͅA̠̰̳͇̻̖͇̬D̩͍̩͔̭͓😂͖̹G̻̞̺̬͓̫͙͔E̻̫̙̞T̹̙̹😂̞͙͔̣̪̩O͙̪̹͙͈̪͖̘U͍͚̱͖T̫̫̝̰̝😂̫̤̥̱̖̳̜O͎̼͔͖̥̩F͇̫̳͔̝😂̬͉M͎̙̤̦̰̱͙Y̫̭̜͚̦͈̰😂͈̖̰͎͉H̳̳̬͔͙̲ͅͅE̻͇̹̬̰̜̖̱A͈̜D̜̣͕̫̯̻̝̭😂̰G̠̲͔̻͔̙̯E̯͚̙̘T̙̜͍̳̩̣͕̭😂̠̪̪͎̱O̹̰̺͙̘̪̭̞̱U̻̮͔͈̠ͅT̫͍͖̪̞͚😂͎̖̥͇O͕̩̯̠̹̜͖F̗͉͚͈̤😂̘̠͈̲̦͉̠M̝͈̰̥̹̗̯ͅY̻͕̳͔̠̟̼̙̣😂̜̗̩̼͓͖H̪͍̞͓̟̠̼̻E̥̰͕̳̣͉̪̭A͔D̗̮😂͔̜̜͙̤̹̩G̗̤͙̩̤̳E̜̗̥̼̲̺T̫͇̞̺̞😂̭̩̦̹̹̭O̭̯͉̫͎̻̮U̮͇͇͔̗T̞̭̦̼̗̹😂̜̪͖͍O̰͓͎̘̜̙͕F̞̝̖😂̩̟͖̭͍̦M̺̖̙̺Y͙̫̤̺̠̰😂̞̫̩H̖̤͍̣͔̟ͅE̞̹̞̗̭̳Ḁ̗͚͔͖D͓͇̱͍̖͙ͅ😂͈̳G̟̫̣͎̞͖͔͇Ẹ̘̦̭ͅT̩̻͎̹͓̭😂̺̦̞͔̫̟O̫U̪̪̩T͉̻̰͎̙̹̣̯😂͍̲̰̟O̞̬͚̻̞̹̪̳ͅF͚͓̤͓͕̱͖😂̦̟̣̖͇̦͕̞M͍̬͚̠̪̙Y̖̮̟̜̗̻̺😂̪H̬̝̬̼̫̺̗̦E͈̱A͈̗̜͚̭̱͇̙ͅD̳̻😂G̭̺̙͔̦̖̭E̞̫͙T͕͇😂̩̩̭̗O̝̗̯̖͍͙̬͎U̲͎͕̳͓̱̖̯T̤😂̞̮͓̙O͍͉̥̻̣̺̩̗F͔̜̻͙̥̱ͅ😂̦͖͚͚̺͚M͙Y̘😂͉̝̘̖̮̜H̱̬̲̯E̘̗̥̹͚͕ͅA̠̰̳͇̻̖͇̬D̩͍̩͔̭͓😂͖̹G̻̞̺̬͓̫͙͔E̻̫̙̞T̹̙̹😂̞͙͔̣̪̩O͙̪̹͙͈̪͖̘U͍͚̱͖T̫̫̝̰̝😂̫̤̥̱̖̳̜O͎̼͔͖̥̩F͇̫̳͔̝😂̬͉M͎̙̤̦̰̱͙Y̫̭̜͚̦͈̰😂͈̖̰͎͉H̳̳̬͔͙̲ͅͅE̻͇̹̬̰̜̖̱A͈̜D̜̣͕̫̯̻̝̭😂̰G̠̲͔̻͔̙̯E̯͚̙̘T̙̜͍̳̩̣͕̭😂̠̪̪͎̱O̹̰̺͙̘̪̭̞̱U̻̮͔͈̠ͅT̫͍͖̪̞͚😂͎̖̥͇O͕̩̯̠̹̜͖F̗͉͚͈̤😂̘̠͈̲̦͉̠M̝͈̰̥̹̗̯ͅY̻͕̳͔̠̟̼̙̣😂̜̗̩̼͓͖H̪͍̞͓̟̠̼̻E̥̰͕̳̣͉̪̭A͔D̗̮😂͔̜̜͙̤̹̩G̗̤͙̩̤̳E̜̗̥̼̲̺T̫͇̞̺̞😂̭̩̦̹̹̭O̭̯͉̫͎̻̮U̮͇͇͔̗T̞̭̦̼̗̹😂̜̪͖͍O̰͓͎̘̜̙͕F̞̝̖😂̩̟͖̭͍̦M̺̖̙̺Y͙̫̤̺̠̰😂̞̫̩H̖̤͍̣͔̟ͅE̞̹̞̗̭̳Ḁ̗͚͔͖D͓͇̱͍̖͙ͅ😂͈̳G̟̫̣͎̞͖͔͇Ẹ̘̦̭ͅT̩̻͎̹͓̭😂̺̦̞͔̫̟O̫U̪̪̩T͉̻̰͎̙̹̣̯😂͍̲̰̟O̞̬͚̻̞̹̪̳ͅF͚͓̤͓͕̱͖😂̦̟̣̖͇̦͕̞M͍̬͚̠̪̙Y̖̮̟̜̗̻̺😂̪H̬̝̬̼̫̺̗̦E͈̱A͈̗̜͚̭̱͇̙ͅD̳̻😂G̭̺̙͔̦̖̭E̞̫͙T͕͇😂̩̩̭̗O̝̗̯̖͍͙̬͎U̲͎͕̳͓̱̖̯T̤😂̞̮͓̙O͍͉̥̻̣̺̩̗F͔̜̻͙̥̱ͅ😂̦͖͚͚̺͚M͙Y̘😂͉̝̘̖̮̜H̱̬̲̯E̘̗̥̹͚͕ͅA̠̰̳͇̻̖͇̬D̩͍̩͔̭͓😂͖̹G̻̞̺̬͓̫͙͔E̻̫̙̞T̹̙̹😂̞͙͔̣̪̩O͙̪̹͙͈̪͖̘U͍͚̱͖T̫̫̝̰̝😂̫̤̥̱̖̳̜O͎̼͔͖̥̩F͇̫̳͔̝😂̬͉M͎̙̤̦̰̱͙Y̫̭̜͚̦͈̰😂͈̖̰͎͉H̳̳̬͔͙̲ͅͅE̻͇̹̬̰̜̖̱A͈̜D̜̣͕̫̯̻̝̭😂̰G̠̲͔̻͔̙̯E̯͚̙̘T̙̜͍̳̩̣͕̭😂̠̪̪͎̱O̹̰̺͙̘̪̭̞̱U̻̮͔͈̠ͅT̫͍͖̪̞͚😂͎̖̥͇O͕̩̯̠̹̜͖F̗͉͚͈̤😂̘̠͈̲̦͉̠M̝͈̰̥̹̗̯ͅY̻͕̳͔̠̟̼̙̣😂̜̗̩̼͓͖H̪͍̞͓̟̠̼̻E̥̰͕̳̣͉̪̭A͔D̗̮😂͔̜̜͙̤̹̩G̗̤͙̩̤̳E̜̗̥̼̲̺T̫͇̞̺̞😂̭̩̦̹̹̭O̭̯͉̫͎̻̮U̮͇͇͔̗T̞̭̦̼̗̹😂̜̪͖͍O̰͓͎̘̜̙͕F̞̝̖😂̩̟͖̭͍̦M̺̖̙̺Y͙̫̤̺̠̰😂̞̫̩H̖̤͍̣͔̟ͅE̞̹̞̗̭̳Ḁ̗͚͔͖D͓͇̱͍̖͙ͅ😂͈̳G̟̫̣͎̞͖͔͇Ẹ̘̦̭ͅT̩̻͎̹͓̭😂̺̦̞͔̫̟O̫U̪̪̩T͉̻̰͎̙̹̣̯😂͍̲̰̟O̞̬͚̻̞̹̪̳ͅF͚͓̤͓͕̱͖😂̦̟̣̖͇̦͕̞M͍̬͚̠̪̙Y̖̮̟̜̗̻̺😂̪H̬̝̬̼̫̺̗̦E͈̱A͈̗̜͚̭̱͇̙ͅD̳̻😂G̭̺̙͔̦̖̭E̞̫͙T͕͇😂̩̩̭̗O̝̗̯̖͍͙̬͎U̲͎͕̳͓̱̖̯T̤😂̞̮͓̙O͍͉̥̻̣̺̩̗F͔̜̻͙̥̱ͅ😂̦͖͚͚̺͚M͙Y̘😂͉̝̘̖̮̜H̱̬̲̯E̘̗̥̹͚͕ͅA̠̰̳͇̻̖͇̬D̩͍̩͔̭͓😂͖̹G̻̞̺̬͓̫͙͔E̻̫̙̞T̹̙̹😂̞͙͔̣̪̩O͙̪̹͙͈̪͖̘U͍͚̱͖T̫̫̝̰̝😂̫̤̥̱̖̳̜O͎̼͔͖̥̩F͇̫̳͔̝😂̬͉M͎̙̤̦̰̱͙Y̫̭̜͚̦͈̰😂͈̖̰͎͉H̳̳̬͔͙̲ͅͅE̻͇̹̬̰̜̖̱A͈̜D̜̣͕̫̯̻̝̭😂̰G̠̲͔̻͔̙̯E̯͚̙̘T̙̜͍̳̩̣͕̭😂̠̪̪͎̱O̹̰̺͙̘̪̭̞̱U̻̮͔͈̠ͅT̫͍͖̪̞͚😂͎̖̥͇O͕̩̯̠̹̜͖F̗͉͚͈̤😂̘̠͈̲̦͉̠M̝͈̰̥̹̗̯ͅY̻͕̳͔̠̟̼̙̣😂̜̗̩̼͓͖H̪͍̞͓̟̠̼̻E̥̰͕̳̣͉̪̭A͔D̗̮😂͔̜̜͙̤̹̩G̗̤͙̩̤̳E̜̗̥̼̲̺T̫͇̞̺̞😂̭̩̦̹̹̭O̭̯͉̫͎̻̮U̮͇͇͔̗T̞̭̦̼̗̹😂̜̪͖͍O̰͓͎̘̜̙͕F̞̝̖😂̩̟͖̭͍̦M̺̖̙̺Y͙̫̤̺̠̰😂̞̫̩H̖̤͍̣͔̟ͅE̞̹̞̗̭̳Ḁ̗͚͔͖D͓͇̱͍̖͙ͅ😂͈̳G̟̫̣͎̞͖͔͇Ẹ̘̦̭ͅT̩̻͎̹͓̭😂̺̦̞͔̫̟O̫U̪̪̩T͉̻̰͎̙̹̣̯😂͍̲̰̟O̞̬͚̻̞̹̪̳ͅF͚͓̤͓͕̱͖😂̦̟̣̖͇̦͕̞M͍̬͚̠̪̙Y̖̮̟̜̗̻̺😂̪H̬̝̬̼̫̺̗̦E͈̱A͈̗̜͚̭̱͇̙ͅD̳̻😂G̭̺̙͔̦̖̭E̞̫͙T͕͇😂̩̩̭̗O̝̗̯̖͍͙̬͎U̲͎͕̳͓̱̖̯T̤😂̞̮͓̙O͍͉̥̻̣̺̩̗F͔̜̻͙̥̱ͅ😂̦͖͚͚̺͚M͙Y̘😂͉̝̘̖̮̜H̱̬̲̯E̘̗̥̹͚͕ͅA̠̰̳͇̻̖͇̬D̩͍̩͔̭͓😂͖̹G̻̞̺̬͓̫͙͔E̻̫̙̞T̹̙̹😂̞͙͔̣̪̩O͙̪̹͙͈̪͖̘U͍͚̱͖T̫̫̝̰̝😂̫̤̥̱̖̳̜O͎̼͔͖̥̩F͇̫̳͔̝😂̬͉M͎̙̤̦̰̱͙Y̫̭̜͚̦͈̰😂͈̖̰͎͉H̳̳̬͔͙̲ͅͅE̻͇̹̬̰̜̖̱A͈̜D̜̣͕̫̯̻̝̭😂̰G̠̲͔̻͔̙̯E̯͚̙̘T̙̜͍̳̩̣͕̭😂̠̪̪͎̱O̹̰̺͙̘̪̭̞̱U̻̮͔͈̠ͅT̫͍͖̪̞͚😂͎̖̥͇O͕̩̯̠̹̜͖F̗͉͚͈̤😂̘̠͈̲̦͉̠M̝͈̰̥̹̗̯ͅY̻͕̳͔̠̟̼̙̣😂̜̗̩̼͓͖H̪͍̞͓̟̠̼̻E̥̰͕̳̣͉̪̭A͔D̗̮😂͔̜̜͙̤̹̩G̗̤͙̩̤̳E̜̗̥̼̲̺T̫͇̞̺̞😂̭̩̦̹̹̭O̭̯͉̫͎̻̮U̮͇͇͔̗T̞̭̦̼̗̹😂̜̪͖͍O̰͓͎̘̜̙͕F̞̝̖😂̩̟͖̭͍̦M̺̖̙̺Y͙̫̤̺̠̰😂̞̫̩H̖̤͍̣͔̟ͅE̞̹̞̗̭̳Ḁ̗͚͔͖D͓͇̱͍̖͙ͅ😂͈̳G̟̫̣͎̞͖͔͇Ẹ̘̦̭ͅT̩̻͎̹͓̭😂̺̦̞͔̫̟O̫U̪̪̩T͉̻̰͎̙̹̣̯😂͍̲̰̟O̞̬͚̻̞̹̪̳ͅF͚͓̤͓͕̱͖😂̦̟̣̖͇̦͕̞M͍̬͚̠̪̙Y̖̮̟̜̗̻̺😂̪H̬̝̬̼̫̺̗̦E͈̱A͈̗̜͚̭̱͇̙ͅD̳̻😂G̭̺̙͔̦̖̭E̞̫͙T͕͇😂̩̩̭̗O̝̗̯̖͍͙̬͎U̲͎͕̳͓̱̖̯T̤😂̞̮͓̙O͍͉̥̻̣̺̩̗F͔̜̻͙̥̱ͅ😂̦͖͚͚̺͚M͙Y̘😂͉̝̘̖̮̜H̱̬̲̯E̘̗̥̹͚͕ͅA̠̰̳͇̻̖͇̬D̩͍̩͔̭͓😂͖̹G̻̞̺̬͓̫͙͔E̻̫̙̞T̹̙̹😂̞͙͔̣̪̩O͙̪̹͙͈̪͖̘U͍͚̱͖T̫̫̝̰̝😂̫̤̥̱̖̳̜O͎̼͔͖̥̩F͇̫̳͔̝😂̬͉M͎̙̤̦̰̱͙Y̫̭̜͚̦͈̰😂͈̖̰͎͉H̳̳̬͔͙̲ͅͅE̻͇̹̬̰̜̖̱A͈̜D̜̣͕̫̯̻̝̭😂̰G̠̲͔̻͔̙̯E̯͚̙̘T̙̜͍̳̩̣͕̭😂̠̪̪͎̱O̹̰̺͙̘̪̭̞̱U̻̮͔͈̠ͅT̫͍͖̪̞͚😂͎̖̥͇O͕̩̯̠̹̜͖F̗͉͚͈̤😂̘̠͈̲̦͉̠M̝͈̰̥̹̗̯ͅY̻͕̳͔̠̟̼̙̣😂̜̗̩̼͓͖H̪͍̞͓̟̠̼̻E̥̰͕̳̣͉̪̭A͔D̗̮😂͔̜̜͙̤̹̩G̗̤͙̩̤̳E̜̗̥̼̲̺T̫͇̞̺̞😂̭̩̦̹̹̭O̭̯͉̫͎̻̮U̮͇͇͔̗T̞̭̦̼̗̹😂̜̪͖͍O̰͓͎̘̜̙͕F̞̝̖😂̩̟͖̭͍̦M̺̖̙̺Y͙̫̤̺̠̰😂̞̫̩H̖̤͍̣͔̟ͅE̞̹̞̗̭̳Ḁ̗͚͔͖D͓͇̱͍̖͙ͅ😂͈̳G̟̫̣͎̞͖͔͇Ẹ̘̦̭ͅT̩̻͎̹͓̭😂̺̦̞͔̫̟O̫U̪̪̩T͉̻̰͎̙̹̣̯😂͍̲̰̟O̞̬͚̻̞̹̪̳ͅF͚͓̤͓͕̱͖😂̦̟̣̖͇̦͕̞M͍̬͚̠̪̙Y̖̮̟̜̗̻̺😂̪H̬̝̬̼̫̺̗̦E͈̱A͈̗̜͚̭̱͇̙ͅD̳̻😂G̭̺̙͔̦̖̭E̞̫͙T͕͇😂̩̩̭̗O̝̗̯̖͍͙̬͎U̲͎͕̳͓̱̖̯T̤😂̞̮͓̙O͍͉̥̻̣̺̩̗F͔̜̻͙̥̱ͅ😂̦͖͚͚̺͚M͙Y̘😂͉̝̘̖̮̜H̱̬̲̯E̘̗̥̹͚͕ͅA̠̰̳͇̻̖͇̬D̩͍̩͔̭͓😂͖̹G̻̞̺̬͓̫͙͔E̻̫̙̞T̹̙̹😂̞͙͔̣̪̩O͙̪̹͙͈̪͖̘U͍͚̱͖T̫̫̝̰̝😂̫̤̥̱̖̳̜O͎̼͔͖̥̩F͇̫̳͔̝😂̬͉M͎̙̤̦̰̱͙Y̫̭̜͚̦͈̰😂͈̖̰͎͉H̳̳̬͔͙̲ͅͅE̻͇̹̬̰̜̖̱A͈̜D̜̣͕̫̯̻̝̭😂̰G̠̲͔̻͔̙̯E̯͚̙̘T̙̜͍̳̩̣͕̭😂̠̪̪͎̱O̹̰̺͙̘̪̭̞̱U̻̮͔͈̠ͅT̫͍͖̪̞͚😂͎̖̥͇O͕̩̯̠̹̜͖F̗͉͚͈̤😂̘̠͈̲̦͉̠M̝͈̰̥̹̗̯ͅY̻͕̳͔̠̟̼̙̣😂̜̗̩̼͓͖H̪͍̞͓̟̠̼̻E̥̰͕̳̣͉̪̭A͔D̗̮😂͔̜̜͙̤̹̩G̗̤͙̩̤̳E̜̗̥̼̲̺T̫͇̞̺̞😂̭̩̦̹̹̭O̭̯͉̫͎̻̮U̮͇͇͔̗T̞̭̦̼̗̹😂̜̪͖͍O̰͓͎̘̜̙͕F̞̝̖😂̩̟͖̭͍̦M̺̖̙̺Y͙̫̤̺̠̰😂̞̫̩H̖̤͍̣͔̟ͅE̞̹̞̗̭̳Ḁ̗͚͔͖D͓͇̱͍̖͙ͅ😂͈̳G̟̫̣͎̞͖͔͇Ẹ̘̦̭ͅT̩̻͎̹͓̭😂̺̦̞͔̫̟O̫U̪̪̩T͉̻̰͎̙̹̣̯😂͍̲̰̟O̞̬͚̻̞̹̪̳ͅF͚͓̤͓͕̱͖😂̦̟̣̖͇̦͕̞M͍̬͚̠̪̙Y̖̮̟̜̗̻̺😂̪H̬̝̬̼̫̺̗̦E͈̱A͈̗̜͚̭̱͇̙ͅD̳̻
 
 def printsquare(leng, squrei):
     if leng < 3:
         leng = 3
     localmatrix = matrix[squrei]
-    tile = int(leng/3) # Т. к я использую матрицы 3х3, число всегда будет округлятся к близжайшему числу / 3
+    tile = int(leng/3) # Т. к я использую матрицы 3х3, число всегда будет округлятся к ближайшему числу / 3
+
     for row in range(3):
         a = row * 3
         for i in range(tile):
@@ -198,25 +299,3 @@ def printsquare(leng, squrei):
                         print(f'{"  " * spaces}{"* " * int(dots - spaces)}', end="") 
                                         
             print()
-
-
-# for i in range(1, 20, 3):
-#     for j in ["а", "б", "в", "г", "д", "е", "ж", "з", "и", "к"]:
-#         printsquare(i, j)
-#         print("\n")
-
-# Я решил не использовать свой модуль ради одной функции
-side = int(input(f"""Введите размер квадрата
-\033[31m{("Значение округлится в меньшую сторону до числа, делящегося на 3")}\033[0m: """))
-
-if str(input("Открыть таблицу квадратов (не корней)? y/n: ")).lower() == "y":
-    webbrowser.open("https://github.com/MC-MOOGLE/TopCourse/blob/main/Python/23.11.21/Squares.png")
-    
-while True:
-    figure = str(input("""Введите номер фигуры
-Для выхода введите любое другое значение: """))
-    if figure in ["а", "б", "в", "г", "д", "е", "ж", "з", "и", "к"]:
-        printsquare(side, figure)
-    else:
-        break
-    side = int(input(f"Введите размер квадрата:")) # Вынес отдельно, так как предупреждение надоедливое
