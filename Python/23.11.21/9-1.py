@@ -61,5 +61,4 @@ def t3():
     tableofmul(start, end, maxm)
 
 
-
 cycletasks(3)

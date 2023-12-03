@@ -15,12 +15,12 @@ def drawsquare(size, id):
     match id:
         case "а" | "f":
             for layer in range(size):
-                    print("  " * layer, end="")
-                    print("* " * (size - layer))
+                print("  " * layer, end="")
+                print("* " * (size - layer))
 
         case "б" | ",":
             for layer in range(size):
-                    print("* " * (layer + 1))
+                print("* " * (layer + 1))
 
         case "в" | "d":
             for layer in range(size):
@@ -105,7 +105,7 @@ while True:
 
 # To be fair, you have to have a very high IQ to understand matrix method.
 # The humour is extremely subtle, and without a solid grasp of theoretical physics
-# most of the jokes will go over a typical viewer’s head. There’s also this method nihilistic outlook,
+# most of the jokes will go over a typical reader’s head. There’s also this method nihilistic outlook,
 # which is deftly woven into his characterisation- his personal philosophy draws heavily from Narodnaya Volya literature,
 # for instance. The fans understand this stuff;
 # they have the intellectual capacity to truly appreciate the depths of these jokes,
