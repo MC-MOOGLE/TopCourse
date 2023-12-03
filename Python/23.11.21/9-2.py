@@ -28,11 +28,15 @@ def drawsquare(size, id):
                 print("* " * (size - (layer * 2)))
 
         case "г" | "u":
-            for layer in range(int(size / 2) + 1):
+            for layer in range(int(size / 2)):
+                print()
+            if size % 2:
+                print("  " * int(size / 2), end="")
+                print("*")
+            for layer in range(int(size / 2), 0, -1):
+                layer -= 1
                 print("  " * layer, end="")
                 print("* " * (size - (layer * 2)))
-            for layer in range(int(size / 2), 0, -1):
-                print()
 
         case "д" | "l":
             for layer in range(int(size / 2)):
@@ -90,10 +94,10 @@ def drawsquare(size, id):
             md.printcolor("Такой фигуры нет! Выход!", "red")
             exit(666)       
                     
-# for i in range(20):
-#     for j in ["f", ",", "d", "u", "l", "t", ";", "p", "b", "r"]:
-#         drawsquare(i, j)
-#     input(">")
+for i in range(20):
+    for j in ["а", "б", "в", "г", "д", "е", "ж", "з", "и", "к"]:
+        drawsquare(i, j)
+    input(">")
 if str(input("Открыть таблицу квадратов (не корней)? y/n: ")).lower() == "y":
      webbrowser.open("https://github.com/MC-MOOGLE/TopCourse/blob/main/Python/23.11.21/Squares.png")
 print("Для выхода, введите любой несуществующий id")
