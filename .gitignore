@@ -2,3 +2,6 @@ Python/Project s1
 gradio_cached_examples
 Labs
 flagged
+.vs
+.vscode
+.CppProperties.json
