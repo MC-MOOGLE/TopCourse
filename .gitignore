@@ -5,4 +5,4 @@ flagged
 .vs
 .vscode
 .CppProperties.json
-CPP\tmp
+CPP/tmp
