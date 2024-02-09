@@ -94,7 +94,7 @@ void t1() {
     Menu c("Soda", 75);
     Menu d("Water", 30);
 
-    Menu AllPositions[] = {a, b, c, d};
+    Menu AllPositions[] = { a, b, c, d };
 
     unsigned int Guests = getNumber<int>("amount of guests");
 
@@ -109,8 +109,7 @@ void t1() {
 
     nl;
     for (int i = 1; i <= Guests; i++) {
-        bool swtch = true;
-        while (swtch) {
+        while (true) {
             unsigned int amount, tmp;
             cout << "Guest " << i << " select position >> ";
             cin >> tmp;
@@ -134,14 +133,14 @@ void t1() {
     for (int i = 1; i <= Guests; i++) {
         double guestTotal = 0;
         cout << "==============" << endl
-            <<  "Guest " << i << ":" << endl;
+            << "Guest " << i << ":" << endl;
         for (int j = 0; j < positionsN; j++) {
             Menu pos = AllPositions[j];
             float subtotal = pos.orders[i] * pos.price;
             cout << "Name    |   " << pos.Name << endl
-                <<  "Price   |   " << pos.price << endl
-                <<  "Amount  |   " << pos.orders[i] << endl
-                <<  "Subtotal|   " << subtotal << "\n\n";
+                << "Price   |   " << pos.price << endl
+                << "Amount  |   " << pos.orders[i] << endl
+                << "Subtotal|   " << subtotal << "\n\n";
             total += subtotal;
             guestTotal += subtotal;
         }
