@@ -80,10 +80,10 @@ void printTask(unsigned short int n) {
 
 void t1() {
     unsigned short int len;
-    int input;
+    int input, a;
 
     cout << "=== Setup ===" << endl;
-    len = getNumber<unsigned int>("n where array = {input * 1, input * 2 ... input * n}");
+    len = getNumber<unsigned int>("n where array = {a = input, a *= 2 ... (n times) a *= 2}");
     deleteLastOutput;
     deleteLastOutput;
 
@@ -92,11 +92,13 @@ void t1() {
     int i = 0;
     while (true) {
         input = getNumber<int>("number (0 to exit)");
+        a = input;
         if (!input) break;
 
         vect.push_back(vector<int>(len));
         for (int j = 0; j < len; j++) {
-            vect[i][j] = input * (j + 1);
+            vect[i][j] = a;
+            a *= 2;
         }
 
         i++;
